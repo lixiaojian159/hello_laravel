@@ -23,3 +23,9 @@ Route::get('/test',function(){
 Route::get('/getEnv',function(){
     echo getEnv('APP_KEY');
 });
+
+Route::get('/','StaticPagesController@home');
+
+Route::get('/help','StaticPagesController@help');
+
+Route::get('/about','StaticPagesController@about');
