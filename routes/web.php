@@ -19,3 +19,7 @@ Route::get('/', function () {
 Route::get('/test',function(){
     echo '123456';
 });
+
+Route::get('/getEnv',function(){
+    echo getEnv('APP_KEY');
+});
