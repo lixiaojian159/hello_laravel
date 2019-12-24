@@ -37071,8 +37071,8 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\phpstudy_pro\WWW\weibo.cn\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\phpstudy_pro\WWW\weibo.cn\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\phpstudy_pro\WWW\laravel.cn\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\phpstudy_pro\WWW\laravel.cn\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
