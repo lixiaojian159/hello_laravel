@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
+
 use Illuminate\Http\Request;
 
 use App\Models\User;
@@ -17,6 +19,12 @@ class UsersController extends Controller
     //某个用户页面
     public function show(User $user)
     {
+        $LocalUserId = Auth::user()->id;
+        if($LocalUserId != $user->id)
+        {
+            session()->flash('danger','您只能查看自己的信息');
+            return redirect()->route('users.show',$LocalUserId);
+        }
         return view('users.show',compact('user'));
     }
 
@@ -40,6 +48,6 @@ class UsersController extends Controller
         Auth::login($user);
         session()->flash('success', '欢迎，您将在这里开启一段新的旅程~');
 
-        return redirect()->route('users.show',[$user]);
+        return redirect()->route('users.show',$user->id);
     }
 }
