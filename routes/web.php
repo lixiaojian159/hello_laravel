@@ -24,6 +24,10 @@ Route::get('/getEnv',function(){
     echo getEnv('APP_KEY');
 });
 
+Route::get('/makePassword',function(){
+    return bcrypt('123456');
+});
+
 Route::get('/','StaticPagesController@home')->name("home");
 
 Route::get('/help','StaticPagesController@help')->name("help");
