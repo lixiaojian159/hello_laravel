@@ -10,6 +10,15 @@ use Illuminate\Http\Request;
 
 class SessionsController extends Controller
 {
+
+    //构造函数：已登录的用户不能再次访问登录页
+    public function __construct()
+    {
+        $this->middleware('guest',[
+            'only' => ['create']
+        ]);
+    }
+
     //登录页面
     public function create()
     {

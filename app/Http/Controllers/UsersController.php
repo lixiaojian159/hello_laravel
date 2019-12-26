@@ -10,6 +10,22 @@ use App\Models\User;
 
 class UsersController extends Controller
 {
+
+    //构造函数 Auth的中间件
+    public function __construct()
+    {
+        $this->middleware('auth',[
+            'except' => ['show','create','store','index']
+        ]);
+    }
+
+    //所有用户
+    public function index()
+    {
+        $users = User::paginate(10);
+        return view('users.index',compact('users'));
+    }
+
     //注册会员页面
     public function create()
     {
@@ -19,12 +35,12 @@ class UsersController extends Controller
     //某个用户页面
     public function show(User $user)
     {
-        $LocalUserId = Auth::user()->id;
-        if($LocalUserId != $user->id)
-        {
-            session()->flash('danger','您只能查看自己的信息');
-            return redirect()->route('users.show',$LocalUserId);
-        }
+        // $LocalUserId = Auth::user()->id;
+        // if($LocalUserId != $user->id)
+        // {
+        //     session()->flash('danger','您只能查看自己的信息');
+        //     return redirect()->route('users.show',$LocalUserId);
+        // }
         return view('users.show',compact('user'));
     }
 
@@ -54,12 +70,14 @@ class UsersController extends Controller
     //编辑用户信息页面
     public function edit(User $user)
     {
+        $this->authorize('update', $user);
         return view('users.edit',compact('user'));
     }
 
     //编辑用户信息逻辑
     public function update(Request $request,User $user)
     {
+        $this->authorize('update', $user);
         $this->validate($request,[
 
             'name'     => 'required|max:50',
