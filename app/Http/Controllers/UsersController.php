@@ -6,6 +6,7 @@ use Auth;
 use Mail;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 use App\Models\User;
 
@@ -139,4 +140,5 @@ class UsersController extends Controller
             $message->from($from,$name)->to($to)->subject($subject);
         });
     }
+
 }
