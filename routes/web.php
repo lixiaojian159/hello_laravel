@@ -46,3 +46,10 @@ Route::delete('/logout','SessionsController@destroy')->name('logout');
 
 Route::get('signup/confirm/{token}','UsersController@confirmEmail')->name('confirm_email');
 
+Route::get('/password/reset','ForgotPasswordController@showLinkRequestForm')->name('password.request');
+
+Route::post('/password/email','ForgotPasswordController@sendEmail')->name('password.email');
+
+Route::get('/password/reset/token','ForgotPasswordController@resetToken')->name('password.token');
+
+Route::post('/password/check','ForgotPasswordController@check')->name('password.check');
