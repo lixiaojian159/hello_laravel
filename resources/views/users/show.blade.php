@@ -8,6 +8,7 @@
     <section class="user_info">
       @include('shared._user_info', ['user' => $user])
     </section>
+    @include('shared._status_form')
     <section class="status">
       @if ($statuses->count() > 0)
         <ul class="list-unstyled">
