@@ -43,7 +43,8 @@ class UsersController extends Controller
         //     session()->flash('danger','您只能查看自己的信息');
         //     return redirect()->route('users.show',$LocalUserId);
         // }
-        return view('users.show',compact('user'));
+        $statuses = $user->statuses()->orderBy('created_at','desc')->paginate(10);
+        return view('users.show',compact('user','statuses'));
     }
 
     //添加注册会员
