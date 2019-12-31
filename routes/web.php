@@ -56,4 +56,4 @@ Route::get('/password/reset/token','ForgotPasswordController@resetToken')->name(
 Route::post('/password/check','ForgotPasswordController@check')->name('password.check');
 
 //微博的发布和删除
-Route::resource('/statuses','StatusesController',['only'=>['store','destory']]);
+Route::resource('/statuses','StatusesController',['only'=>['store','destroy']]);
